@@ -152,6 +152,11 @@ interface FlightEnabled{
     void fly();
 
 
+    default FlightStages transition(FlightStages stage){
+        System.out.println("Transition not implemented on " + this.getClass().getName());
+    }
+
+
 }
 
 interface Trackable{
