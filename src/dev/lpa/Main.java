@@ -1,14 +1,17 @@
 package dev.lpa;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-
+//
         Bird bird = new Bird();
-
-        Animal animal = bird;
-        FlightEnabled flier = bird;
-        System.out.println("COnversion:" + flier.MILES_TO_KM );
-        Trackable tracked = bird;
+//
+//        Animal animal = bird;
+//        FlightEnabled flier = bird;
+//        System.out.println("COnversion:" + flier.MILES_TO_KM );
+//        Trackable tracked = bird;
 
 //        animal.move();
         // These don't work, compiler only cares about declared type
@@ -23,15 +26,50 @@ public class Main {
 
 //        inFlight( new Jet());
 
-        Trackable truck = new Truck();
+//        Trackable truck = new Truck();
 //        truck.track();
 
-        double kmTraveled = 100;
-        double milesTraveled = kmTraveled * FlightEnabled.KM_TO_MILES;
-        System.out.printf("Truck traveled %.2f km or %.2f miles%n", kmTraveled, milesTraveled);
+//        double kmTraveled = 100;
+//        double milesTraveled = kmTraveled * FlightEnabled.KM_TO_MILES;
+//        System.out.printf("Truck traveled %.2f km or %.2f miles%n", kmTraveled, milesTraveled);
+
+        LinkedList<FlightEnabled> flightEnabledThings = new LinkedList<>();
+         flightEnabledThings.add(bird);
+
+        List<FlightEnabled> betterFliers = new LinkedList<>();
+        betterFliers.add(bird);
+
+        triggerFliers(flightEnabledThings);
+        flyFliers(flightEnabledThings);
+        landFliers(flightEnabledThings);
+
+        triggerFliers(betterFliers);
+        flyFliers(betterFliers);
+        landFliers(betterFliers);
 
 
     }
+
+
+
+    private static void triggerFliers (List<FlightEnabled> fliers){
+        for (var flier : fliers){
+            flier.takeOff();
+        }
+    }
+    private static void flyFliers (List<FlightEnabled> fliers){
+        for (var flier : fliers){
+            flier.fly();
+        }
+    }
+
+    private static void landFliers (List<FlightEnabled> fliers){
+        for (var flier : fliers){
+            flier.land();
+        }
+    }
+
+
 
     private static void inFlight (FlightEnabled flier){
         flier.takeOff();
