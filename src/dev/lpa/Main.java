@@ -7,14 +7,15 @@ public class Main {
 
         Animal animal = bird;
         FlightEnabled flier = bird;
+        System.out.println("COnversion:" + flier.MILES_TO_KM );
         Trackable tracked = bird;
 
-        animal.move();
+//        animal.move();
         // These don't work, compiler only cares about declared type
 //        flier.move();
 //        tracked.move();
 //        flier.fly();
-//        flier.takeOff();
+//         flier.takeOff();
 //        tracked.track();
 //        flier.land();
 
@@ -23,7 +24,13 @@ public class Main {
 //        inFlight( new Jet());
 
         Trackable truck = new Truck();
-        truck.track();
+//        truck.track();
+
+        double kmTraveled = 100;
+        double milesTraveled = kmTraveled * FlightEnabled.KM_TO_MILES;
+        System.out.printf("Truck traveled %.2f km or %.2f miles%n", kmTraveled, milesTraveled);
+
+
     }
 
     private static void inFlight (FlightEnabled flier){
@@ -41,9 +48,15 @@ public class Main {
 // `abstract` is already implicitly implied
 // In fact, any mtd without a body is really implicitly both public and abstract
 interface FlightEnabled{
+    // implicitly public static final - AKA constants
+    // Final prevents mods to component
+    // Can't be overwritten, reassigned etc
+    public static final double MILES_TO_KM = 1.60934;
+    double KM_TO_MILES = 0.621371;
     void takeOff();
     void land();
     void fly();
+
 
 }
 

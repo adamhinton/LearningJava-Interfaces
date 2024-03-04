@@ -7,4 +7,5 @@ public class Truck implements Trackable{
             System.out.println(getClass().getSimpleName() + "'s coordinated recorded");
         }
 
+
 }
