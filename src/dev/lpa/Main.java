@@ -18,7 +18,9 @@ public class Main {
 //        tracked.track();
 //        flier.land();
 
-        inFlight(flier);
+//        inFlight(flier);
+
+        inFlight( new Jet());
     }
 
     private static void inFlight (FlightEnabled flier){
